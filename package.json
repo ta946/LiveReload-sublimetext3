@@ -1,15 +1,15 @@
 {
-    "schema_version": "2.0",
-    "packages": [
-        {
-            "name": "LiveReload",
-            "details": "https://github.com/Grafikart/ST3-LiveReload",
-            "releases": [
-                {
-                    "sublime_text": "*",
-                    "details": "https://github.com/Grafikart/ST3-LiveReload/tree/master"
-                }
-            ]
-        }
-    ]
+	"schema_version": "2.0",
+	"packages": [
+		{
+			"name": "LiveReload",
+			"details": "https://github.com/alessandro-pezzato/LiveReload-sublimetext3",
+			"releases": [
+				{
+					"sublime_text": ">=3000",
+					"branch": "master"
+				}
+			]
+		}
+	]
 }
