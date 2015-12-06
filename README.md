@@ -1,31 +1,28 @@
-[![Build Status](https://travis-ci.org/dz0ny/LiveReload-sublimetext2.png?branch=devel)](https://travis-ci.org/dz0ny/LiveReload-sublimetext2)
-[![Fattrme](http://api.flattr.com/button/flattr-badge-large.png)](http://flattr.com/thing/1492893/dz0nyLiveReload-sublimetext2-on-GitHub)
-[![Gittip](http://badgr.co/gittip/dz0ny.png)](https://www.gittip.com/dz0ny/)
-
-
-
 # LiveReload for Sublime Text 3
 
-A web browser page reloading plugin for the [Sublime Text 3](http://sublimetext.com "Sublime Text 3") editor. 
+A web browser page reloading plugin for the [Sublime Text 3](http://sublimetext.com "Sublime Text 3") editor.
 
 ## Installing
 
-Open Terminal and
+With [Package Control](http://wbond.net/sublime_packages/package_control):
 
-### Linux users
+1. Run “Package Control: Install Package” command, find and install `Emmet` plugin.
+2. Restart ST editor (if required)
+
+### Manual install, Linux users
 
 ```
 cd ~/.config/sublime-text-3/Packages
 rm -rf LiveReload
-git clone -b devel https://github.com/dz0ny/LiveReload-sublimetext2.git LiveReload
+git clone https://github.com/alessandro-pezzato/LiveReload-sublimetext3 LiveReload
 ```
 
-### OSX users
+### Manual install, OSX users
 
 ```
 cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/
 rm -rf LiveReload
-git clone -b devel https://github.com/dz0ny/LiveReload-sublimetext2.git LiveReload
+git clone https://github.com/alessandro-pezzato/LiveReload-sublimetext3 LiveReload
 ```
 
 # Using
