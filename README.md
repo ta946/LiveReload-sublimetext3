@@ -6,7 +6,7 @@ A web browser page reloading plugin for the [Sublime Text 3](http://sublimetext.
 
 With [Package Control](http://wbond.net/sublime_packages/package_control):
 
-1. Run “Package Control: Install Package” command, find and install `Emmet` plugin.
+1. Run “Package Control: Install Package” command, find and install `LiveReload` plugin.
 2. Restart ST editor (if required)
 
 ### Manual install, Linux users
