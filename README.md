@@ -14,7 +14,7 @@ With [Package Control](http://wbond.net/sublime_packages/package_control):
 ```
 cd ~/.config/sublime-text-3/Packages
 rm -rf LiveReload
-git clone https://github.com/alessandro-pezzato/LiveReload-sublimetext3 LiveReload
+git clone https://github.com/alepez/LiveReload-sublimetext3 LiveReload
 ```
 
 ### Manual install, OSX users
@@ -22,14 +22,16 @@ git clone https://github.com/alessandro-pezzato/LiveReload-sublimetext3 LiveRelo
 ```
 cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/
 rm -rf LiveReload
-git clone https://github.com/alessandro-pezzato/LiveReload-sublimetext3 LiveReload
+git clone https://github.com/alepez/LiveReload-sublimetext3 LiveReload
 ```
 
 # Using
 
 Enable desired plug-ins via Command Palette (Ctrl+Shift+P) add livereload.js to you html document.
 
-```<script>document.write('<script src="http://' + (location.host || '${1:localhost}').split(':')[0] + ':${2:35729}/livereload.js?snipver=1"></' + 'script>')</script>```
+```
+<script>document.write('<script src="http://' + (location.host || '${1:localhost}').split(':')[0] + ':${2:35729}/livereload.js?snipver=1"></' + 'script>')</script>
+```
 
 You can also use one of the extensions listed here http://feedback.livereload.com/knowledgebase/articles/86242-how-do-i-install-and-use-the-browser-extensions-
 
@@ -49,3 +51,7 @@ You can also use one of the extensions listed here http://feedback.livereload.co
 # Plug-in api
 
 https://livereload-for-sublime-text.readthedocs.org/en/latest/
+
+# Thanks
+
+The original plugin was written by [Janez Troha](https://github.com/dz0ny)
