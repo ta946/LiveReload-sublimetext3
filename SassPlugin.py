@@ -40,9 +40,9 @@ class SassThread(threading.Thread):
             self.config.update(localConfig)
 
         try:
-            self.command = self.getLocalOverride.get('command') or 'sass --update --stop-on-error --no-cache'
+            self.command = self.getLocalOverride.get('command') or 'sass --update --stop-on-error --no-cache --sourcemap=none'
         except Exception as e:
-            self.command = 'sass --update --stop-on-error --no-cache'
+            self.command = 'sass --update --stop-on-error --no-cache --sourcemap=none'
 
         self.stdout = None
         self.stderr = None
@@ -62,17 +62,15 @@ class SassThread(threading.Thread):
             return {}
 
     def run(self):
-        print("[LiveReload Sass] config : " + json.dumps(self.config))
-        print("[LiveReload Sass] destination_dir : " + self.config['destination_dir'])
 
         source = os.path.join(self.dirname, self.filename)
         destinationDir = self.dirname if self.config['destination_dir'] is None else self.config['destination_dir']
-        destination = os.path.join(destinationDir, re.sub("\.(sass|scss)", '.css', self.filename))
+        destination = os.path.abspath(os.path.join(self.dirname, destinationDir, re.sub("\.(sass|scss)", '.css', self.filename)))
+
+        cmd = self.command + ' "' + source + '":"' + destination + '"'
 
         print("[LiveReload Sass] source : " + source)
         print("[LiveReload Sass] destination : " + destination)
-
-        cmd = self.command + ' "' + source + '":"' + destination + '"'
         print("[LiveReload Sass] Cmd : " + cmd)
 
         p = subprocess.Popen(cmd, shell=True, stdin=subprocess.PIPE,
@@ -82,7 +80,7 @@ class SassThread(threading.Thread):
 
         # Find the file to refresh from the console output
         if compiled:
-            print("Sass : " + compiled.decode("utf-8"));
+            print("[LiveReload Sass] reloading : " + compiled.decode("utf-8"));
             matches = re.findall('\S+\.css', compiled.decode("utf-8"))
             if len(matches) > 0:
                 for match in matches:
