@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+from .server.Settings import read_sublime_settings
 import os
 import threading
 import subprocess
@@ -94,7 +95,7 @@ class CompassThread(threading.Thread):
     def run(self):
         dirname = self.dirname
         if not self.check_for_compass_config():
-            if json.load(open(os.path.join(sublime.packages_path(),'LiveReload','CompassPlugin.sublime-settings')))["create_configrb"]:
+            if read_sublime_settings(os.path.join(sublime.packages_path(),'LiveReload','CompassPlugin.sublime-settings'))["create_configrb"]:
                 self.generate_conf_rb(dirname)
             else:
                 sublime.error_message("Could not find Compass config.rb. Please check your sublime-project file and adjust settings accordingly!")
