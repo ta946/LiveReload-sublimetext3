@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+from .server.Settings import read_sublime_settings
 import os
 import threading
 import subprocess
@@ -31,12 +32,12 @@ class SassThread(threading.Thread):
             self.dirname = dirname.replace('\\', '/')
 
         # default config
-        self.config = json.load(open(os.path.join(sublime.packages_path(),'LiveReload','SassPlugin.sublime-settings')))
+        self.config = read_sublime_settings(os.path.join(sublime.packages_path(),'LiveReload','SassPlugin.sublime-settings')) or {}
 
         # check for local config
         localConfigFile = os.path.join(self.dirname, "sass_config.json");
         if os.path.isfile(localConfigFile):
-            localConfig = json.load(open(localConfigFile))
+            localConfig = read_sublime_settings(localConfigFile)
             self.config.update(localConfig)
 
         try:
