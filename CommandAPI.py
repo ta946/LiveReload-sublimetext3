@@ -32,3 +32,33 @@ class LiveReloadEnablePluginCommand(sublime_plugin.ApplicationCommand):
     def run(self):
         sublime.active_window().show_quick_panel(LiveReload.Plugin.listPlugins(),
                 self.on_done)
+
+
+class LiveReloadEnablePluginByNameCommand(sublime_plugin.ApplicationCommand):
+
+    def run(self, name, enable=None):
+        mcs = LiveReload.Plugin
+        try:
+            plugin = mcs.getPlugin(name)
+            index = mcs.plugins.index(plugin.__class__)
+        except:
+            sublime.error_message('LiveReload plugin {} not found!'.format(name))
+            return
+        if enable is None:
+            mcs.togglePlugin(index)
+        elif enable:
+            if plugin.isEnabled:
+                return
+            mcs.enabled_plugins.append(plugin.name)
+            sublime.set_timeout(lambda : \
+                                sublime.status_message('"%s" the LiveReload plug-in has been enabled!'
+                                 % plugin.title), 100)
+            plugin.onEnabled()
+        elif not enable:
+            if not plugin.isEnabled:
+                return
+            mcs.enabled_plugins.remove(plugin.name)
+            sublime.set_timeout(lambda : \
+                                sublime.status_message('"%s" the LiveReload plug-in has been disabled!'
+                                 % plugin.title), 100)
+            plugin.onDisabled()
