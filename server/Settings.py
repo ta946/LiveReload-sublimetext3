@@ -36,12 +36,10 @@ class Settings(dict):
             user = os.path.join(cdir, '..', '..', 'User', 'LiveReload.sublime-settings')
             data_user = read_sublime_settings(user) or {}
 
-            for i in data:
-                self[i] = data[i]
+            self.update(data)
+            self.update(data_user)
+            log(data_user)
 
-            for i in data_user:
-                log(i)
-                self[i] = data_user[i]
             log('LiveReload: Settings loaded')
             log('-----------')
         except Exception as e:
