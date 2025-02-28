@@ -99,7 +99,7 @@ class LiveReload(threading.Thread, SimpleCallbackServer,
         self.ws_server.stop()
 
 
-if not sublime.platform is 'build':
+if sublime.platform != 'build':
     try:
         sys.modules['LiveReload'].API
     except Exception:

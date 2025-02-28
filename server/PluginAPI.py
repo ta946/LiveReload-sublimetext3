@@ -80,7 +80,7 @@ class PluginFactory(type):
         file_types = []
         for plugin in mcs.plugins:
             if plugin.__name__ in mcs.enabled_plugins:
-                if not plugin.file_types is '*':
+                if plugin.file_types != '*':
                     for ext in plugin.file_types.split(','):
                         file_types.append(ext)
         return file_types
@@ -162,7 +162,7 @@ class PluginClass:
 
             if [f for f in this_plugin if filename.endswith(f)]:
                 return True
-            elif self.file_types is '*' and otherPluginsWithFilter():
+            elif self.file_types == '*' and otherPluginsWithFilter():
                 return True
             else:
                 return False
@@ -197,7 +197,7 @@ class PluginClass:
         """
 
         if self.isEnabled:
-            if command is 'refresh':  # to support new protocol
+            if command == 'refresh':  # to support new protocol
                 settings['command'] = 'reload'
             try:
                 if not filename:

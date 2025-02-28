@@ -26,7 +26,7 @@ class LiveReloadHelp(sublime_plugin.ApplicationCommand):
 class LiveReloadEnablePluginCommand(sublime_plugin.ApplicationCommand):
 
     def on_done(self, index):
-        if not index is -1:
+        if index != -1:
             LiveReload.Plugin.togglePlugin(index)
 
     def run(self):
